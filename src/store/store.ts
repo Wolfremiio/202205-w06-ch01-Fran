@@ -1,30 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { CharacterkModel } from '../models/character';
-import { counterReducer } from '../reducers/counter/counter.reducer';
-import { taskReducer } from '../reducers/tasks/task.reducer';
+import { CharacterModel } from '../models/character';
+import { characterReducer } from '../reducers/character.reducer';
+
 // import { createStore} from "redux";
 
-export interface iCounterState {
-    value: number;
-    status: 'idle' | 'loading' | 'failed';
-}
 export interface iState {
-    tasks: Array<TaskModel>;
-    counter: iCounterState;
+    characters: Array<CharacterModel>;
 }
 
 const preloadedState = {
-    tasks: [],
-    counter: {
-        value: 0,
-        status: 'idle',
-    },
+    characters: [],
 };
 
 export const store = configureStore({
     reducer: {
-        tasks: taskReducer,
-        counter: counterReducer,
+        characters: characterReducer,
     },
     preloadedState,
 });
